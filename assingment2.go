@@ -106,6 +106,8 @@ if( resp.StatusCode >= 200 && resp.StatusCode < 300 ) {
          }
              V.Id = bson.NewObjectId()
     uc.session.DB("cmpe273").C("users").Insert(V)
+    rw.Header().Set("Content-Type", "application/json")
+    rw.WriteHeader(201)
    UJ, _ := json.Marshal(V)
      fmt.Fprintf(rw, "%s", UJ)
     	  }
@@ -206,7 +208,7 @@ if( resp.StatusCode >= 200 && resp.StatusCode < 300 ) {
     uj, _ := json.Marshal(V)
 
     rw.Header().Set("Content-Type", "application/json")
-    rw.WriteHeader(200)
+    rw.WriteHeader(201)
     fmt.Fprintf(rw, "%s", uj)
     	  }
 	  	  
